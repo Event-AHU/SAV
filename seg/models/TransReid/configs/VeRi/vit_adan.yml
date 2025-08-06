@@ -1,0 +1,59 @@
+MODEL:
+  PRETRAIN_CHOICE: 'ourcars'   #预训练数据集
+  PRETRAIN_PATH: '/DATA/wuwentao/TransReID-main/pretrained_model/jx_vit_base_p16_224-80ecf9dd.pth'  #预训练权重位置
+  METRIC_LOSS_TYPE: 'triplet'
+  IF_LABELSMOOTH: 'off'
+  IF_WITH_CENTER: 'no'
+  NAME: 'transformer'
+  NO_MARGIN: True
+  DEVICE_ID: ('4')
+  TRANSFORMER_TYPE: 'vit_large_patch16_224_TransReID'
+  STRIDE_SIZE: [16, 16]
+
+INPUT:
+  SIZE_TRAIN: [256, 256]
+  SIZE_TEST: [256, 256]
+  PROB: 0.5 # random horizontal flip
+  RE_PROB: 0.5 # random erasing
+  PADDING: 10
+  PIXEL_MEAN: [0.5, 0.5, 0.5]
+  PIXEL_STD: [0.5, 0.5, 0.5]
+
+DATASETS:
+  NAMES: ('veri')
+  ROOT_DIR: ('/DATA/wuwentao/data')  #数据集根目录
+
+DATALOADER: #数据处理器
+  SAMPLER: 'softmax_triplet'  #采样器
+  NUM_INSTANCE: 4 #num实例
+  NUM_WORKERS: 8  #num工作
+
+SOLVER:
+  OPTIMIZER_NAME: 'Adan' #优化器
+  MAX_EPOCHS: 120 #最大epochs
+  BASE_LR: 0.008  #基础LR
+  IMS_PER_BATCH: 16 #batch
+  WARMUP_METHOD: 'linear' #热身方法
+  LARGE_FC_LR: False
+  CHECKPOINT_PERIOD: 120  #检查点时间段
+  LOG_PERIOD: 50
+  EVAL_PERIOD: 120
+  WEIGHT_DECAY:  1e-4
+  WEIGHT_DECAY_BIAS: 1e-4
+  BIAS_LR_FACTOR: 2
+  BETAS: [0.98, 0.92, 0.99]
+  EPS: 1e-8
+  MAX_GRAD_NORM: 0.0
+  BIAS_DECAY: False
+
+TEST: #测试
+  EVAL: True
+  IMS_PER_BATCH: 16  #batch
+  RE_RANKING: False
+  WEIGHT: ''
+  NECK_FEAT: 'before'
+  FEAT_NORM: 'yes'  #功能规范
+
+OUTPUT_DIR: '/DATA/wuwentao/TransReID-main/output' #输出DIR
+
+

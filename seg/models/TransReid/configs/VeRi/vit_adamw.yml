@@ -1,0 +1,56 @@
+MODEL:
+  PRETRAIN_CHOICE: 'ourcars'   #预训练数据集
+  PRETRAIN_PATH: '/home/lcl_d/wuwentao/maeclip/premodel_zuizhong/checkpoint-100.pth'  #预训练权重位置
+  METRIC_LOSS_TYPE: 'triplet'
+  IF_LABELSMOOTH: 'off'
+  IF_WITH_CENTER: 'no'
+  NAME: 'transformer'
+  NO_MARGIN: True
+  DEVICE_ID: ('4')
+  TRANSFORMER_TYPE: 'vit_base_patch16_224_TransReID'
+  STRIDE_SIZE: [16, 16]
+  #DIST_TRAIN: True
+#"/DATA/wuwentao/pre-modle/checkpoint-150_0408.pth"
+INPUT:
+  SIZE_TRAIN: [256, 256]
+  SIZE_TEST: [256, 256]
+  PROB: 0.5 # random horizontal flip
+  RE_PROB: 0.5 # random erasing
+  PADDING: 10
+  PIXEL_MEAN: [0.5, 0.5, 0.5]
+  PIXEL_STD: [0.5, 0.5, 0.5]
+
+DATASETS:
+  NAMES: ('veri')
+  ROOT_DIR: ('/home/lcl_d/wuwentao/data')  #数据集根目录
+
+DATALOADER: #数据处理器
+  SAMPLER: 'softmax_triplet'  #采样器
+  NUM_INSTANCE: 4 #num实例
+  NUM_WORKERS: 8  #num工作
+
+SOLVER:
+  OPTIMIZER_NAME: 'SGD' #优化器
+  MAX_EPOCHS: 150 #最大epochs
+  BASE_LR: 0.008  #基础LR
+  IMS_PER_BATCH: 64 #batch
+  WARMUP_METHOD: 'linear' #热身方法
+  LARGE_FC_LR: False
+  CHECKPOINT_PERIOD: 150  #保存checkpoint文件轮数
+  LOG_PERIOD: 50  #一个eopch中多少论输出一次损失
+  EVAL_PERIOD: 2  #测试频率
+  WEIGHT_DECAY:  1e-4
+  WEIGHT_DECAY_BIAS: 1e-4
+  BIAS_LR_FACTOR: 2
+#
+TEST: #测试
+  EVAL: True
+  IMS_PER_BATCH: 64  #batch
+  RE_RANKING: False
+  WEIGHT: ''
+  NECK_FEAT: 'before'
+  FEAT_NORM: 'yes'  #功能规范
+
+OUTPUT_DIR: '/home/lcl_d/wuwentao/transreid/output' #输出DIR
+
+
