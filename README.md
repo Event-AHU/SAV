@@ -69,6 +69,13 @@ bash tools/dist.sh test seg/configs/ovsam/ovsam_coco_rn50x16_point_prompt_all_pr
 
 ### Experimental Results and Visualization 
 
+<p align="center">
+  <img width="80%" src="https://github.com/Event-AHU/SAV/blob/main/fig/result.png" alt="reconst_vis"/>
+</p> 
+
+<p align="center">
+  <img width="80%" src="https://github.com/Event-AHU/SAV/blob/main/fig/show.png" alt="attentionmaps"/>
+</p> 
 
 
 ### Acknowledgement 
