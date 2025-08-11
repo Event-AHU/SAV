@@ -81,7 +81,7 @@ bash tools/dist.sh test seg/configs/ovsam/ovsam_coco_rn50x16_point_prompt_all_pr
 
 
 ### Citation 
-If you have any questions about this work, please leave an issue. Please cite this work if it helps your resesearch. 
+If you have any questions about this work, please leave an issue. Please cite this work if it helps your research. 
 
 ```
 @misc{wang2025SAV,
