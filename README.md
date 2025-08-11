@@ -81,6 +81,8 @@ bash tools/dist.sh test seg/configs/ovsam/ovsam_coco_rn50x16_point_prompt_all_pr
 
 
 ### Citation 
+If you have any questions about this work, please leave an issue. Please cite this work if it helps your resesearch. 
+
 ```
 @misc{wang2025SAV,
       title={Segment Any Vehicle: Semantic and Visual Context Driven SAM and A Benchmark}, 
