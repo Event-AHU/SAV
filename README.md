@@ -72,7 +72,9 @@ bash tools/dist.sh test seg/configs/ovsam/ovsam_coco_rn50x16_point_prompt_all_pr
 
 
 ### Acknowledgement 
-
+[[SAM](https://github.com/facebookresearch/segment-anything)] 
+[[3DRealCar](https://github.com/xiaobiaodu/3DRealCar_Toolkit)] 
+[[CLIP](https://github.com/openai/CLIP)] 
 
 
 ### Citation 
