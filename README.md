@@ -53,7 +53,18 @@ TORCH_CUDA_ARCH_LIST="{COMCAP}" TORCH_NVCC_FLAGS="-Xfatbin -compress-all" CUDA_H
 
 
 ### Training and Testing 
-
+Please extract the language embeddings first.
+```commandline
+bash tools/dist.sh gen_cls seg/configs/ovsam/ovsam_coco_rn50x16_point.py 8
+```
+CLIP2SAM training:
+```commandline
+bash tools/dist.sh train seg/configs/clip2sam/clip2sam_coco_rn50x16_prompt4.py 8
+```
+Inference
+```commandline
+bash tools/dist.sh test seg/configs/ovsam/ovsam_coco_rn50x16_point_prompt_all_prompt4.py 8
+```
 
 
 ### Experimental Results and Visualization 
