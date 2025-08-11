@@ -14,10 +14,6 @@ With the rapid advancement of autonomous driving, vehicle perception, particular
 
 
 
-### Framework 
-
-
-
 
 
 ### VehicleSeg10K Benchmark Dataset 
