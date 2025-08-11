@@ -34,7 +34,22 @@ https://www.dropbox.com/scl/fi/tgtdboa4pxa7rtfg9ag52/VehicleSeg10K.zip?rlkey=ex4
 
 
 ### Environment Configuration 
+We use conda to manage the environment.
 
+Pytorch installation:
+```commandline
+conda install pytorch torchvision torchaudio pytorch-cuda=12.1 cuda -c pytorch  -c "nvidia/label/cuda-12.1.0" -c "nvidia/label/cuda-12.1.1"
+```
+
+mmengine installation:
+```commandline
+python -m pip install https://github.com/open-mmlab/mmengine/archive/refs/tags/v0.8.5.zip
+```
+
+mmcv installation (note that older version mmcv before this commit may cause bugs):
+```commandline
+TORCH_CUDA_ARCH_LIST="{COMCAP}" TORCH_NVCC_FLAGS="-Xfatbin -compress-all" CUDA_HOME=$(dirname $(dirname $(which nvcc))) LD_LIBRARY_PATH=$(dirname $(dirname $(which nvcc)))/lib MMCV_WITH_OPS=1 FORCE_CUDA=1 python -m pip install git+https://github.com/open-mmlab/mmcv.git@4f65f91db6502d990ce2ee5de0337441fb69dd10
+```
 
 
 ### Training and Testing 
